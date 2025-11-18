@@ -17,14 +17,18 @@ export default function HeaderFavoritesButton({ onPress }: Props) {
   return (
     <View style={styles.container}>
       <Button
-        mode="contained-tonal"
+        mode="contained"
         icon="heart"
         onPress={onPress}
         compact
         contentStyle={styles.buttonContent}
         labelStyle={styles.label}
+        style={styles.button}
+        buttonColor="#ffffff"
+        textColor="#0d47a1"
+        uppercase={false}
       >
-        Mes favoris ({nb})
+        Mes favoris : {nb}
       </Button>
 
       {/* Ancienne version icon-only conservée en commentaire pour revenir facilement à un IconButton.
@@ -49,8 +53,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  buttonContent: { flexDirection: "row-reverse" },
-  label: { fontSize: 13, fontWeight: "700" },
+  button: {
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: "#e0e0e0",
+    elevation: 1,
+  },
+  buttonContent: { flexDirection: "row-reverse", paddingHorizontal: 12 },
+  label: { fontSize: 13, fontWeight: "700", color: "#0d47a1" },
   badge: {
     position: "absolute",
     top: 2,
