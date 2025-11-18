@@ -36,12 +36,9 @@ export default function JobDetailScreen({ route, navigation }: JobDetailProps) {
     );
   }
 
-  const adresse = [
-    job.numeroRue,
-    job.rue,
-    job.codePostal,
-    job.ville,
-  ].filter(Boolean);
+  const adresse = [job.numeroRue, job.rue, job.codePostal, job.ville].filter(
+    Boolean,
+  );
 
   const salaire =
     typeof job.salaireAnnuel === "number"
@@ -53,10 +50,7 @@ export default function JobDetailScreen({ route, navigation }: JobDetailProps) {
 
     if (estFavori) {
       dispatch(retirerFavori(job.id));
-      Alert.alert(
-        "Favoris",
-        `"${job.poste}" a été retirée de vos favoris.`,
-      );
+      Alert.alert("Favoris", `"${job.poste}" a été retirée de vos favoris.`);
     } else {
       dispatch(ajouterFavori(job));
       Alert.alert("Favoris", `"${job.poste}" a été ajoutée à vos favoris.`);
@@ -128,9 +122,7 @@ export default function JobDetailScreen({ route, navigation }: JobDetailProps) {
           <Text variant="titleMedium" style={styles.sectionTitle}>
             Contact
           </Text>
-          {job.email && (
-            <Text style={styles.contact}>Email : {job.email}</Text>
-          )}
+          {job.email && <Text style={styles.contact}>Email : {job.email}</Text>}
           {job.telephone && (
             <Text style={styles.contact}>Téléphone : {job.telephone}</Text>
           )}

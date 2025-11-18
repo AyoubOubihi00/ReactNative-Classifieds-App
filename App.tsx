@@ -78,17 +78,17 @@ function JobListScreen({ navigation }: JobListProps): React.ReactElement {
     const base = term
       ? jobs.filter((job) => {
           const haystack = [
-          job.poste,
-          job.entreprise,
-          job.ville,
-          job.description,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
+            job.poste,
+            job.entreprise,
+            job.ville,
+            job.description,
+          ]
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
 
-        return haystack.includes(term);
-      })
+          return haystack.includes(term);
+        })
       : jobs;
 
     const salaryFiltered = base.filter((job) =>
@@ -103,9 +103,7 @@ function JobListScreen({ navigation }: JobListProps): React.ReactElement {
       });
     }
 
-    return [...salaryFiltered].sort((a, b) =>
-      a.poste.localeCompare(b.poste),
-    );
+    return [...salaryFiltered].sort((a, b) => a.poste.localeCompare(b.poste));
   }, [jobs, query, sortMode, salaryFilter]);
 
   useLayoutEffect(() => {
@@ -145,9 +143,7 @@ function JobListScreen({ navigation }: JobListProps): React.ReactElement {
         <Text variant="labelLarge">Fourchette de salaire</Text>
         <SegmentedButtons
           value={salaryFilter}
-          onValueChange={(value) =>
-            setSalaryFilter(value as SalaryFilter)
-          }
+          onValueChange={(value) => setSalaryFilter(value as SalaryFilter)}
           buttons={[
             { value: "all", label: "Tous" },
             { value: "0-50000", label: "< 50k€" },

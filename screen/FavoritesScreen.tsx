@@ -13,10 +13,7 @@ type RootStackParamList = {
   Favorites: undefined;
 };
 
-type FavoritesProps = NativeStackScreenProps<
-  RootStackParamList,
-  "Favorites"
->;
+type FavoritesProps = NativeStackScreenProps<RootStackParamList, "Favorites">;
 
 export default function FavoritesScreen({ navigation }: FavoritesProps) {
   const favoris = useSelector((s: RacineEtat) => s.favoris.elements);
@@ -42,9 +39,7 @@ export default function FavoritesScreen({ navigation }: FavoritesProps) {
   };
 
   const filteredFavoris = useMemo(() => {
-    const filtered = favoris.filter((job) =>
-      matchesSalary(job.salaireAnnuel),
-    );
+    const filtered = favoris.filter((job) => matchesSalary(job.salaireAnnuel));
     if (sortMode === "date") {
       return [...filtered].sort((a, b) => {
         const dateA = a.date ? new Date(a.date).getTime() : 0;
